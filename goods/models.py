@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from tinymce.models import HTMLField
 
 
 class Category(models.Model):
@@ -7,6 +9,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+        ordering = ('pk',)
 
     def __str__(self) -> str:
         return self.title
@@ -17,11 +20,13 @@ class Good(models.Model):
         ('white', 'Белое')
     )
 
-    image = models.ImageField(verbose_name = 'Изображение')
+    image = models.ImageField(verbose_name = 'Изображение', null = True, blank = True)
     category = models.ForeignKey(Category, verbose_name = 'Категория', null = True, blank = True, on_delete = models.CASCADE)
     color = models.CharField(verbose_name = 'Цвет', choices = COLORS_CHOICES, max_length = 255, default = 'red')
     title = models.CharField(max_length = 255, verbose_name = 'Заголовок')
+    # title = HTMLField()
     price = models.IntegerField(default = 0, verbose_name = 'Цена')
+    created_at = models.DateTimeField(verbose_name = 'Дата создания', default = timezone.now)
 
     class Meta:
         verbose_name = 'Товар'
@@ -29,7 +34,7 @@ class Good(models.Model):
 
 
     def __str__(self) -> str:
-        return self.title
+        return f'{self.pk} - {self.title}'
     
 
 class Review(models.Model):

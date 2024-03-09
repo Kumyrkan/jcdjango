@@ -6,3 +6,9 @@ admin.site.register(Good)
 admin.site.register(Review)
 
 # Register your models here.
+
+@admin.register(Good)
+class GoodAdmin(admin.ModelAdmin):
+    list_display=('title','category','color','price','created_at')
+    list_filter=('category','color')
+    search_fields=('title',)

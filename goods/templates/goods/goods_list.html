@@ -1,0 +1,33 @@
+{% extends 'goods/base.html' %}
+
+{% load static %}
+
+{% block title %} GOODS_LIST {% endblock title  %}
+
+{% block content %}
+
+<header>
+    <div class="header-area">
+    <h1>
+        Товары
+        <br>
+        <a href="{% url 'good_new' %}">Создать новый товар</a>
+    </h1>
+    <img src="{% static 'img/kot1.jpg' %}" alt="">
+    </div>
+</header>
+
+<div class="container">
+{% for i in goods %}
+    <div class = "nn">
+        <div class="main">
+            <a href="{% url 'good_detail' pk=i.pk %}">
+            <img src="{{ i.image.url }}" alt="" width="400" height="400"></a>
+            <h2 class="name">{{i.title}}</h2>
+            <h2 class = "price" style = >{{i.price}}</h2>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock content %}

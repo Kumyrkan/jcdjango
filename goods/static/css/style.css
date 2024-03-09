@@ -1,0 +1,40 @@
+header {
+    background: blue;
+    padding: 20px;
+}
+h1 {
+    color: white;
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.nn {
+    border: 2px blue solid;
+    border-radius: 10px;
+    margin: 10px 100px;
+    margin-top: 25px;
+    padding: 10px;
+}
+.main {
+    color: #808080;
+    font-size: 20px;
+    width: 450px;
+    height: 450px;
+    margin: 30px;
+    padding: 20px;
+}
+h2 {
+    color: #696969;
+    font-family: Arial;
+    font-size: 20px;
+    font-weight: bold;
+}
+.container {
+    max-width: 1900px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: #00CED1;
+    text-align: center;
+}
